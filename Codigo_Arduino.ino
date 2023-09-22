@@ -32,7 +32,6 @@ void setup() {
 
    tiempoActual = millis()/1000;
    tiempoConteo = tiempoActual; 
-   // put your setup code here, to run once:
 }
 
 // Ciclo del programa
