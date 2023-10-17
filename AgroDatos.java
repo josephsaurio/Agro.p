@@ -1,22 +1,33 @@
 package login;
-
-//sebas
 import java.sql.*;
+import clases.Conexión;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import com.panamahitek.*;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
+import jssc.SerialPortException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
-/**
- *
- * @author frank
- */
+import java.awt.Color;
+
+
 public class Agrodatos extends javax.swing.JFrame {
 
+    //Creo el objeto del arduino
+    PanamaHitek_Arduino arduinonano = new PanamaHitek_Arduino();   
+    //Datos obtenido de la anterior pantalla
+    public static String id_lote;
+    public static String nombre_lote;
     /**
      * Creates new form Agrodatos
      */
     public Agrodatos() {
         initComponents();
-        
-        //Sebas
-        this.setLocationRelativeTo(null);
+        nombreLote.setText("LOTE: "+nombre_lote);
     }
 
     /**
@@ -28,239 +39,829 @@ public class Agrodatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
+        phjlabel2 = new javax.swing.JLabel();
+        phjpanel2 = new login.PanelRound();
+        phjtextfield2 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        vergraficajpanel = new login.PanelRound();
+        vergraficajlabel = new javax.swing.JLabel();
+        cerrarjpanel = new javax.swing.JPanel();
+        cerrarjlabel = new javax.swing.JLabel();
+        minimizarjpanel = new javax.swing.JPanel();
+        minimizarjlabel = new javax.swing.JLabel();
+        backjpanel = new javax.swing.JPanel();
+        backjlabel = new javax.swing.JLabel();
+        phjlabel = new javax.swing.JLabel();
+        lotejlabel1 = new javax.swing.JLabel();
+        phjpanel = new login.PanelRound();
+        phTXT = new javax.swing.JTextField();
+        bgcafe = new javax.swing.JPanel();
+        phjpanel1 = new login.PanelRound();
+        humedadSTXT = new javax.swing.JTextField();
+        phjlabel1 = new javax.swing.JLabel();
+        phjlabel3 = new javax.swing.JLabel();
+        phjpanel3 = new login.PanelRound();
+        temperaturaSTXT = new javax.swing.JTextField();
+        panelRound1 = new login.PanelRound();
+        ingresar = new javax.swing.JLabel();
+        panelRound2 = new login.PanelRound();
+        arduino = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        phjpanel4 = new login.PanelRound();
+        nitrogenoTXT = new javax.swing.JTextField();
+        phjlabel4 = new javax.swing.JLabel();
+        phjlabel5 = new javax.swing.JLabel();
+        phjpanel5 = new login.PanelRound();
+        nutrientesTXT = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         nombreLote = new javax.swing.JLabel();
-        txt_pH = new javax.swing.JTextField();
-        phJlabel = new javax.swing.JLabel();
-        txt_nitrogeno = new javax.swing.JTextField();
-        nitrogenoJlabel = new javax.swing.JLabel();
-        txt_temperatura_suelo = new javax.swing.JTextField();
-        temperaturaJlabel = new javax.swing.JLabel();
-        txt_nutriente = new javax.swing.JTextField();
-        nutrientesJlabel = new javax.swing.JLabel();
-        txt_humedad_suelo = new javax.swing.JTextField();
-        humedadJLabel = new javax.swing.JLabel();
-        ingresarJPanel = new javax.swing.JPanel();
-        ingresarDatosJLabel = new javax.swing.JLabel();
-        hardwardJPanel = new javax.swing.JPanel();
-        hardwardJLabel = new javax.swing.JLabel();
-        label_status = new javax.swing.JLabel();
-        volverJPanel = new javax.swing.JPanel();
-        volverJLabel = new javax.swing.JLabel();
-        txt_humedad_ambiente = new javax.swing.JTextField();
-        humedadJLabel1 = new javax.swing.JLabel();
-        txt_temperatura_ambiente = new javax.swing.JTextField();
-        humedadJLabel2 = new javax.swing.JLabel();
+        temperaturajlabel = new javax.swing.JLabel();
+        temperaturajpanel = new login.PanelRound();
+        temperaturaATXT = new javax.swing.JTextField();
+        humedadjlabel = new javax.swing.JLabel();
+        humedadjpanel = new login.PanelRound();
+        humedadATXT = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+
+        phjlabel2.setBackground(new java.awt.Color(0, 102, 51));
+        phjlabel2.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel2.setForeground(new java.awt.Color(0, 102, 51));
+        phjlabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel2.setText("PH");
+
+        phjpanel2.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel2.setRoundBottomLeft(20);
+        phjpanel2.setRoundBottomRight(20);
+        phjpanel2.setRoundTopLeft(20);
+        phjpanel2.setRoundTopRight(20);
+
+        phjtextfield2.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        phjtextfield2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        phjtextfield2.setText("0");
+        phjtextfield2.setBorder(null);
+        phjtextfield2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phjtextfield2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout phjpanel2Layout = new javax.swing.GroupLayout(phjpanel2);
+        phjpanel2.setLayout(phjpanel2Layout);
+        phjpanel2Layout.setHorizontalGroup(
+            phjpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(phjtextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        phjpanel2Layout.setVerticalGroup(
+            phjpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(phjtextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(230, 230, 230));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nombreLote.setText("LOTE 1");
-        jPanel3.add(nombreLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
+        vergraficajpanel.setBackground(new java.awt.Color(33, 131, 128));
+        vergraficajpanel.setRoundBottomLeft(40);
+        vergraficajpanel.setRoundBottomRight(40);
+        vergraficajpanel.setRoundTopLeft(40);
+        vergraficajpanel.setRoundTopRight(40);
 
-        txt_pH.setText("aaaaa");
-        txt_pH.addActionListener(new java.awt.event.ActionListener() {
+        vergraficajlabel.setFont(new java.awt.Font("Gotham", 1, 22)); // NOI18N
+        vergraficajlabel.setForeground(new java.awt.Color(255, 255, 255));
+        vergraficajlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vergraficajlabel.setText("VER GRÁFICA");
+        vergraficajlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        vergraficajlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                vergraficajlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                vergraficajlabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout vergraficajpanelLayout = new javax.swing.GroupLayout(vergraficajpanel);
+        vergraficajpanel.setLayout(vergraficajpanelLayout);
+        vergraficajpanelLayout.setHorizontalGroup(
+            vergraficajpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(vergraficajlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+        );
+        vergraficajpanelLayout.setVerticalGroup(
+            vergraficajpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vergraficajpanelLayout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addComponent(vergraficajlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(vergraficajpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, -20, 360, 60));
+
+        cerrarjpanel.setBackground(new java.awt.Color(108, 89, 49));
+
+        cerrarjlabel.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        cerrarjlabel.setForeground(new java.awt.Color(255, 255, 255));
+        cerrarjlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cerrarjlabel.setText("x");
+        cerrarjlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarjlabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cerrarjlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarjlabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cerrarjlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cerrarjlabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cerrarjpanelLayout = new javax.swing.GroupLayout(cerrarjpanel);
+        cerrarjpanel.setLayout(cerrarjpanelLayout);
+        cerrarjpanelLayout.setHorizontalGroup(
+            cerrarjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cerrarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        cerrarjpanelLayout.setVerticalGroup(
+            cerrarjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cerrarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(cerrarjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
+
+        minimizarjpanel.setBackground(new java.awt.Color(108, 89, 49));
+
+        minimizarjlabel.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        minimizarjlabel.setForeground(new java.awt.Color(255, 255, 255));
+        minimizarjlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minimizarjlabel.setText("—");
+        minimizarjlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minimizarjlabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        minimizarjlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizarjlabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizarjlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizarjlabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout minimizarjpanelLayout = new javax.swing.GroupLayout(minimizarjpanel);
+        minimizarjpanel.setLayout(minimizarjpanelLayout);
+        minimizarjpanelLayout.setHorizontalGroup(
+            minimizarjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimizarjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(minimizarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        minimizarjpanelLayout.setVerticalGroup(
+            minimizarjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimizarjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(minimizarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(minimizarjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, -1, -1));
+
+        backjpanel.setBackground(new java.awt.Color(108, 89, 49));
+
+        backjlabel.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        backjlabel.setForeground(new java.awt.Color(255, 255, 255));
+        backjlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        backjlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/backk.png"))); // NOI18N
+        backjlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backjlabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        backjlabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backjlabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backjlabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backjlabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout backjpanelLayout = new javax.swing.GroupLayout(backjpanel);
+        backjpanel.setLayout(backjpanelLayout);
+        backjpanelLayout.setHorizontalGroup(
+            backjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        backjpanelLayout.setVerticalGroup(
+            backjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backjpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(backjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        phjlabel.setBackground(new java.awt.Color(0, 102, 51));
+        phjlabel.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel.setForeground(new java.awt.Color(0, 102, 51));
+        phjlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel.setText("PH");
+        jPanel1.add(phjlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 190, -1));
+
+        lotejlabel1.setBackground(new java.awt.Color(0, 102, 51));
+        lotejlabel1.setFont(new java.awt.Font("Gotham", 1, 28)); // NOI18N
+        lotejlabel1.setForeground(new java.awt.Color(0, 102, 51));
+        lotejlabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lotejlabel1.setText("MENÚ INGRESO DE DATOS");
+        jPanel1.add(lotejlabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 800, 40));
+
+        phjpanel.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel.setRoundBottomLeft(15);
+        phjpanel.setRoundBottomRight(15);
+        phjpanel.setRoundTopLeft(15);
+        phjpanel.setRoundTopRight(15);
+
+        phTXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        phTXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        phTXT.setText("0");
+        phTXT.setBorder(null);
+        phTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pHActionPerformed(evt);
+                phTXTActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_pH, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
-        phJlabel.setText("PH:");
-        jPanel3.add(phJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
+        javax.swing.GroupLayout phjpanelLayout = new javax.swing.GroupLayout(phjpanel);
+        phjpanel.setLayout(phjpanelLayout);
+        phjpanelLayout.setHorizontalGroup(
+            phjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(phTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        phjpanelLayout.setVerticalGroup(
+            phjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(phTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        txt_nitrogeno.setText("aaaaaaa");
-        jPanel3.add(txt_nitrogeno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        jPanel1.add(phjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 190, 40));
 
-        nitrogenoJlabel.setText("NITROGENO:");
-        jPanel3.add(nitrogenoJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        bgcafe.setBackground(new java.awt.Color(108, 89, 49));
+        bgcafe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_temperatura_suelo.setText("aaaaaa");
-        jPanel3.add(txt_temperatura_suelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        phjpanel1.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel1.setRoundBottomLeft(15);
+        phjpanel1.setRoundBottomRight(15);
+        phjpanel1.setRoundTopLeft(15);
+        phjpanel1.setRoundTopRight(15);
 
-        temperaturaJlabel.setText("TEMPERATURA:");
-        jPanel3.add(temperaturaJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
+        humedadSTXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        humedadSTXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        humedadSTXT.setText("0");
+        humedadSTXT.setBorder(null);
+        humedadSTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                humedadSTXTActionPerformed(evt);
+            }
+        });
 
-        txt_nutriente.setText("aaaaaaa");
-        jPanel3.add(txt_nutriente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+        javax.swing.GroupLayout phjpanel1Layout = new javax.swing.GroupLayout(phjpanel1);
+        phjpanel1.setLayout(phjpanel1Layout);
+        phjpanel1Layout.setHorizontalGroup(
+            phjpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(humedadSTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        phjpanel1Layout.setVerticalGroup(
+            phjpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(humedadSTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        nutrientesJlabel.setText("NUTRIENTES");
-        jPanel3.add(nutrientesJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
+        bgcafe.add(phjpanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, 40));
 
-        txt_humedad_suelo.setText("aaaaaa");
-        jPanel3.add(txt_humedad_suelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+        phjlabel1.setBackground(new java.awt.Color(204, 255, 204));
+        phjlabel1.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel1.setForeground(new java.awt.Color(204, 255, 204));
+        phjlabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel1.setText("HUMEDAD S");
+        bgcafe.add(phjlabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 190, 40));
 
-        humedadJLabel.setText("HUMEDAD");
-        jPanel3.add(humedadJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
+        phjlabel3.setBackground(new java.awt.Color(204, 255, 204));
+        phjlabel3.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel3.setForeground(new java.awt.Color(204, 255, 204));
+        phjlabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel3.setText("TEMPERATURA S");
+        bgcafe.add(phjlabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 190, 40));
 
-        ingresarDatosJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ingresarDatosJLabel.setText("ingresar datos");
-        ingresarDatosJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        phjpanel3.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel3.setRoundBottomLeft(15);
+        phjpanel3.setRoundBottomRight(15);
+        phjpanel3.setRoundTopLeft(15);
+        phjpanel3.setRoundTopRight(15);
+
+        temperaturaSTXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        temperaturaSTXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        temperaturaSTXT.setText("0");
+        temperaturaSTXT.setBorder(null);
+        temperaturaSTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                temperaturaSTXTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout phjpanel3Layout = new javax.swing.GroupLayout(phjpanel3);
+        phjpanel3.setLayout(phjpanel3Layout);
+        phjpanel3Layout.setHorizontalGroup(
+            phjpanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(temperaturaSTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        phjpanel3Layout.setVerticalGroup(
+            phjpanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(temperaturaSTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bgcafe.add(phjpanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 40));
+
+        panelRound1.setBackground(new java.awt.Color(33, 131, 128));
+        panelRound1.setRoundBottomLeft(10);
+        panelRound1.setRoundBottomRight(10);
+        panelRound1.setRoundTopLeft(10);
+        panelRound1.setRoundTopRight(10);
+
+        ingresar.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        ingresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ingresar.setText("INGRESAR");
+        ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarDatosJLabelMouseClicked(evt);
+                ingresarMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout ingresarJPanelLayout = new javax.swing.GroupLayout(ingresarJPanel);
-        ingresarJPanel.setLayout(ingresarJPanelLayout);
-        ingresarJPanelLayout.setHorizontalGroup(
-            ingresarJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ingresarDatosJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ingresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
-        ingresarJPanelLayout.setVerticalGroup(
-            ingresarJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ingresarDatosJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ingresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel3.add(ingresarJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, 50));
+        bgcafe.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 180, 40));
 
-        hardwardJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hardwardJLabel.setText("usar hardward");
-        hardwardJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelRound2.setBackground(new java.awt.Color(33, 131, 128));
+        panelRound2.setRoundBottomLeft(10);
+        panelRound2.setRoundBottomRight(10);
+        panelRound2.setRoundTopLeft(10);
+        panelRound2.setRoundTopRight(10);
+
+        arduino.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        arduino.setForeground(new java.awt.Color(255, 255, 255));
+        arduino.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        arduino.setText("ARDUINO");
+        arduino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hardwardJLabelMouseClicked(evt);
+                arduinoMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout hardwardJPanelLayout = new javax.swing.GroupLayout(hardwardJPanel);
-        hardwardJPanel.setLayout(hardwardJPanelLayout);
-        hardwardJPanelLayout.setHorizontalGroup(
-            hardwardJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hardwardJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
+        panelRound2.setLayout(panelRound2Layout);
+        panelRound2Layout.setHorizontalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(arduino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
-        hardwardJPanelLayout.setVerticalGroup(
-            hardwardJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hardwardJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        panelRound2Layout.setVerticalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(arduino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel3.add(hardwardJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
-        jPanel3.add(label_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 80, 30));
+        bgcafe.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
-        volverJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        volverJLabel.setText("volver");
-        volverJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                volverJLabelMouseClicked(evt);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 130130.png"))); // NOI18N
+        bgcafe.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 150, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
+        bgcafe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+
+        phjpanel4.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel4.setRoundBottomLeft(15);
+        phjpanel4.setRoundBottomRight(15);
+        phjpanel4.setRoundTopLeft(15);
+        phjpanel4.setRoundTopRight(15);
+
+        nitrogenoTXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        nitrogenoTXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nitrogenoTXT.setText("0");
+        nitrogenoTXT.setBorder(null);
+        nitrogenoTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nitrogenoTXTActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout volverJPanelLayout = new javax.swing.GroupLayout(volverJPanel);
-        volverJPanel.setLayout(volverJPanelLayout);
-        volverJPanelLayout.setHorizontalGroup(
-            volverJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(volverJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        javax.swing.GroupLayout phjpanel4Layout = new javax.swing.GroupLayout(phjpanel4);
+        phjpanel4.setLayout(phjpanel4Layout);
+        phjpanel4Layout.setHorizontalGroup(
+            phjpanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(nitrogenoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-        volverJPanelLayout.setVerticalGroup(
-            volverJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(volverJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        phjpanel4Layout.setVerticalGroup(
+            phjpanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nitrogenoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(volverJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
+        bgcafe.add(phjpanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, 40));
 
-        txt_humedad_ambiente.setText("aaaaaa");
-        jPanel3.add(txt_humedad_ambiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
+        phjlabel4.setBackground(new java.awt.Color(204, 255, 204));
+        phjlabel4.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel4.setForeground(new java.awt.Color(204, 255, 204));
+        phjlabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel4.setText("NITRÓGENO");
+        bgcafe.add(phjlabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 190, 40));
 
-        humedadJLabel1.setText("HUMEDAD_ambiente");
-        jPanel3.add(humedadJLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
+        phjlabel5.setBackground(new java.awt.Color(204, 255, 204));
+        phjlabel5.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        phjlabel5.setForeground(new java.awt.Color(204, 255, 204));
+        phjlabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phjlabel5.setText("NUTRIENTES");
+        bgcafe.add(phjlabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 6, 190, 30));
 
-        txt_temperatura_ambiente.setText("aaaaaa");
-        jPanel3.add(txt_temperatura_ambiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+        phjpanel5.setBackground(new java.awt.Color(255, 255, 255));
+        phjpanel5.setRoundBottomLeft(15);
+        phjpanel5.setRoundBottomRight(15);
+        phjpanel5.setRoundTopLeft(15);
+        phjpanel5.setRoundTopRight(15);
 
-        humedadJLabel2.setText("temperatura_ambiente");
-        jPanel3.add(humedadJLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
+        nutrientesTXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        nutrientesTXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        nutrientesTXT.setText("0");
+        nutrientesTXT.setBorder(null);
+        nutrientesTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nutrientesTXTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout phjpanel5Layout = new javax.swing.GroupLayout(phjpanel5);
+        phjpanel5.setLayout(phjpanel5Layout);
+        phjpanel5Layout.setHorizontalGroup(
+            phjpanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel5Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(nutrientesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        phjpanel5Layout.setVerticalGroup(
+            phjpanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(phjpanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nutrientesTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bgcafe.add(phjpanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 40));
+
+        jPanel1.add(bgcafe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 800, 250));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+
+        nombreLote.setBackground(new java.awt.Color(0, 102, 51));
+        nombreLote.setFont(new java.awt.Font("Gotham Black", 2, 18)); // NOI18N
+        nombreLote.setForeground(new java.awt.Color(92, 25, 22));
+        nombreLote.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreLote.setText("LOTE: -----");
+        jPanel1.add(nombreLote, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 360, 30));
+
+        temperaturajlabel.setBackground(new java.awt.Color(0, 102, 51));
+        temperaturajlabel.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        temperaturajlabel.setForeground(new java.awt.Color(0, 102, 51));
+        temperaturajlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        temperaturajlabel.setText("TEMPERATURA A");
+        jPanel1.add(temperaturajlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 190, -1));
+
+        temperaturajpanel.setBackground(new java.awt.Color(255, 255, 255));
+        temperaturajpanel.setRoundBottomLeft(15);
+        temperaturajpanel.setRoundBottomRight(15);
+        temperaturajpanel.setRoundTopLeft(15);
+        temperaturajpanel.setRoundTopRight(15);
+
+        temperaturaATXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        temperaturaATXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        temperaturaATXT.setText("0");
+        temperaturaATXT.setBorder(null);
+        temperaturaATXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                temperaturaATXTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout temperaturajpanelLayout = new javax.swing.GroupLayout(temperaturajpanel);
+        temperaturajpanel.setLayout(temperaturajpanelLayout);
+        temperaturajpanelLayout.setHorizontalGroup(
+            temperaturajpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(temperaturajpanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(temperaturaATXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        temperaturajpanelLayout.setVerticalGroup(
+            temperaturajpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(temperaturajpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(temperaturaATXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(temperaturajpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 190, 40));
+
+        humedadjlabel.setBackground(new java.awt.Color(0, 102, 51));
+        humedadjlabel.setFont(new java.awt.Font("Gotham", 1, 20)); // NOI18N
+        humedadjlabel.setForeground(new java.awt.Color(0, 102, 51));
+        humedadjlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        humedadjlabel.setText("HUMEDAD A");
+        jPanel1.add(humedadjlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 180, -1));
+
+        humedadjpanel.setBackground(new java.awt.Color(255, 255, 255));
+        humedadjpanel.setRoundBottomLeft(15);
+        humedadjpanel.setRoundBottomRight(15);
+        humedadjpanel.setRoundTopLeft(15);
+        humedadjpanel.setRoundTopRight(15);
+
+        humedadATXT.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
+        humedadATXT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        humedadATXT.setText("0");
+        humedadATXT.setBorder(null);
+        humedadATXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                humedadATXTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout humedadjpanelLayout = new javax.swing.GroupLayout(humedadjpanel);
+        humedadjpanel.setLayout(humedadjpanelLayout);
+        humedadjpanelLayout.setHorizontalGroup(
+            humedadjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(humedadjpanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(humedadATXT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        humedadjpanelLayout.setVerticalGroup(
+            humedadjpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(humedadjpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(humedadATXT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(humedadjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 190, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 400, 10));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+
+        status.setFont(new java.awt.Font("Microsoft Tai Le", 1, 14)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 102, 51));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 300, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void ingresarDatosJLabelMouseClicked(java.awt.event.MouseEvent evt) {                                                 
-        
-        //sebas
-        //me falta lo de comprobar a que lote se añaden los datos
-        //me falta lo de como añadir el dato del tiempo
-        try{
-            //conexion a la base de datos
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/agrop", "root", "1846583467");
+    private void vergraficajlabelMouseEntered(java.awt.event.MouseEvent evt) {                                              
+        vergraficajpanel.setBackground(new Color(0,60,60));
+    }                                             
 
+    private void vergraficajlabelMouseExited(java.awt.event.MouseEvent evt) {                                             
+        vergraficajpanel.setBackground(new Color(33,131,128));
+    }                                            
+
+    private void minimizarjlabelMouseClicked(java.awt.event.MouseEvent evt) {                                             
+        this.setState(JFrame.ICONIFIED);
+    }                                            
+
+    private void minimizarjlabelMouseEntered(java.awt.event.MouseEvent evt) {                                             
+        minimizarjpanel.setBackground(new Color(61,53,37));
+    }                                            
+
+    private void minimizarjlabelMouseExited(java.awt.event.MouseEvent evt) {                                            
+        minimizarjpanel.setBackground(new Color(108,89,49));
+    }                                           
+
+    private void cerrarjlabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        System.exit(0);
+    }                                         
+
+    private void cerrarjlabelMouseEntered(java.awt.event.MouseEvent evt) {                                          
+        cerrarjpanel.setBackground(Color.red);
+    }                                         
+
+    private void cerrarjlabelMouseExited(java.awt.event.MouseEvent evt) {                                         
+        cerrarjpanel.setBackground(new Color(108,89,49));
+    }                                        
+
+    private void backjlabelMouseExited(java.awt.event.MouseEvent evt) {                                       
+        backjpanel.setBackground(new Color(108,89,49));
+    }                                      
+
+    private void backjlabelMouseEntered(java.awt.event.MouseEvent evt) {                                        
+        backjpanel.setBackground(new Color(61,53,37));
+    }                                       
+
+    private void backjlabelMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        Agrosuelos a = new Agrosuelos();
+        this.setVisible(false);
+        a.setVisible(true);
+    }                                       
+
+    private void phTXTActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+    }                                     
+
+    private void temperaturaATXTActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    private void humedadATXTActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+
+    private void humedadSTXTActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+
+    private void phjtextfield2ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void temperaturaSTXTActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    private void nitrogenoTXTActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                                            
+
+    private void nutrientesTXTActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void ingresarMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        //Aqui lo que hago es tomar la hora actual de mi pc
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+        //Empiezo con SQL
+        try {
+            //conexion a la base de datos
+            Connection cn = Conexión.conectar();
             //instruccion a la base de datos(le voy a mandar los valores de los detalles)
             PreparedStatement pst = cn.prepareStatement("insert into detalle_suelo values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
             //aqui le digo a que columnas van dichos valores
             pst.setString(1, "0");
-            //txt_nombre es como se llama el jtextfield de donde vamos a sacar este dato
-            pst.setString(2, "1"); //me toca despues relacionarlo con el suelo que se esta editando
-            pst.setString(3, txt_pH.getText().trim());
-            pst.setString(4, txt_temperatura_suelo.getText().trim());
-            pst.setString(5, txt_temperatura_ambiente.getText().trim());
-            pst.setString(6, txt_humedad_suelo.getText().trim());
-            pst.setString(7, txt_humedad_ambiente.getText().trim()); 
-            pst.setString(8, txt_nitrogeno.getText().trim());
-            pst.setString(9, txt_nutriente.getText().trim());
-            pst.setString(10, "0"); //me toca despues relacionarlo con la hora de mi pc
-
-
-            //le digo a java y a la base de datos que ejecute lo anterior
+            pst.setString(2, id_lote);
+            pst.setString(3, phTXT.getText().trim());
+            pst.setString(4, temperaturaSTXT.getText().trim());
+            pst.setString(5, temperaturaATXT.getText().trim());
+            pst.setString(6, humedadSTXT.getText().trim());
+            pst.setString(7, humedadATXT.getText().trim());
+            pst.setString(8, nitrogenoTXT.getText().trim());
+            pst.setString(9, nutrientesTXT.getText().trim());
+            pst.setString(10, dateFormat.format(date));
+            //le digo a la base de datos que ejecute lo anterior
             pst.executeUpdate();
 
             //limpio los txt
-            txt_pH.setText("");
-            txt_temperatura_suelo.setText("");
-            txt_temperatura_ambiente.setText("");
-            txt_humedad_suelo.setText("");
-            txt_humedad_ambiente.setText("");
-            txt_nitrogeno.setText("");
-            txt_nutriente.setText("");
+            phTXT.setText("");
+            temperaturaSTXT.setText("");
+            temperaturaATXT.setText("");
+            humedadSTXT.setText("");
+            humedadATXT.setText("");
+            nitrogenoTXT.setText("");
+            nutrientesTXT.setText("");
+            status.setText("Registro exitoso");
 
-            //modifico el jlabel para que me diga que ya se registro el usuario
-            label_status.setText("Registro exitoso.");
-    
-        }catch (Exception e){
-            label_status.setText("Registro no exitoso.");
-            }
-
-
-    }                                                
-
-    private void hardwardJLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        try{
-            //conexion a la base de datos
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/agrop", "root", "1846583467");
-            
-            
-            
-            
-            //modifico el jlabel para que me diga que ya se registro el usuario
-            label_status.setText("Hardware conectado.");
-            
-        }catch (Exception e){
-            label_status.setText("Registro no exitoso.");
-
+        } catch (Exception e) {
+            status.setText("Registro no exitoso :(");
         }
-    }                                           
+    }                                     
 
-    private void txt_pHActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }                                      
+    private void arduinoMouseClicked(java.awt.event.MouseEvent evt) {                                     
+        //Creo el objeto listener para el puerto en el que ira el arduino con los sensores
+        SerialPortEventListener listener = new SerialPortEventListener() {
+            @Override
+            public void serialEvent(SerialPortEvent spe) {
+                try {
+                    //Este string sera el que me reciba el mensaje del arduino
+                    String msg;
+                    if (arduinonano.isMessageAvailable() == true) {//Si llega un mensaje
+                        msg = arduinonano.printMessage(); //Al string msg le meto el mensaje que llego
+                        String[] datos = msg.split(","); //Creo un arreglo, ya que tengo varios sensores, para que guarde en cada espacio un dato
+                        String temperaturaA = datos[0]; //Estos seran los datos finales
+                        String humedadA = datos[1];
+                        String humedadS = datos[2];
 
-    private void volverJLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-       Agrosuelos a = new Agrosuelos();
-        this.setVisible(false);
-        a.setVisible(true);
-    }                                         
+                        arduinonano.killArduinoConnection(); //Acabo la conexion con Arduino
+
+                        //Aqui lo que hago es tomar la hora actual de mi pc
+                        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                        Date date = new Date();
+                        try {
+                            //conexion a la base de datos
+                            Connection cn = Conexión.conectar();
+
+                            //instruccion a la base de datos(le voy a mandar los valores de los detalles)
+                            PreparedStatement pst = cn.prepareStatement("insert into detalle_suelo values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+                            pst.setString(1, "0");
+                            pst.setString(2, id_lote);
+                            pst.setDouble(3, 5.5); //Le estoy poniendo valores por mi cuenta mientras puedo probar el potenciometro por mi cuenta
+                            pst.setInt(4, 33); //Le estoy poniendo valores por mi cuenta mientras puedo probar el potenciometro por mi cuenta
+                            pst.setString(5, temperaturaA);
+                            pst.setString(6, humedadS);
+                            pst.setString(7, humedadA);
+                            pst.setInt(8, 5); //Le estoy poniendo valores por mi cuenta mientras puedo probar el potenciometro por mi cuenta
+                            pst.setInt(9, 4); //Le estoy poniendo valores por mi cuenta mientras puedo probar el potenciometro por mi cuenta
+                            pst.setString(10, dateFormat.format(date));
+
+                            //le digo a java y a la base de datos que ejecute lo anterior
+                            pst.executeUpdate();
+
+                            status.setText("Registro con arduino exitoso");
+
+                        } catch (Exception e) {
+                            status.setText("Registro no exitoso :(");
+                        }
+                    }                                    
+                } catch (SerialPortException ex) {
+                    System.out.println("Error de puerto");
+                } catch (ArduinoException ex) {
+                    System.out.println("Error de arduino");
+                }
+            }
+        };
+        
+        //Esta es por asi decirlo la direccion del puerto que voy a escuchar con el listener
+        try {
+            arduinonano.arduinoRXTX("COM7", 9600, listener);
+        } catch (ArduinoException ex) {
+            System.out.println("Error con arduino en com7");
+        }
+    }                                    
 
     /**
      * @param args the command line arguments
@@ -298,28 +899,52 @@ public class Agrodatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel hardwardJLabel;
-    private javax.swing.JPanel hardwardJPanel;
-    private javax.swing.JLabel humedadJLabel;
-    private javax.swing.JLabel humedadJLabel1;
-    private javax.swing.JLabel humedadJLabel2;
-    private javax.swing.JLabel ingresarDatosJLabel;
-    private javax.swing.JPanel ingresarJPanel;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel label_status;
-    private javax.swing.JLabel nitrogenoJlabel;
+    private javax.swing.JLabel arduino;
+    private javax.swing.JLabel backjlabel;
+    private javax.swing.JPanel backjpanel;
+    private javax.swing.JPanel bgcafe;
+    private javax.swing.JLabel cerrarjlabel;
+    private javax.swing.JPanel cerrarjpanel;
+    private javax.swing.JTextField humedadATXT;
+    private javax.swing.JTextField humedadSTXT;
+    private javax.swing.JLabel humedadjlabel;
+    private login.PanelRound humedadjpanel;
+    private javax.swing.JLabel ingresar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lotejlabel1;
+    private javax.swing.JLabel minimizarjlabel;
+    private javax.swing.JPanel minimizarjpanel;
+    private javax.swing.JTextField nitrogenoTXT;
     private javax.swing.JLabel nombreLote;
-    private javax.swing.JLabel nutrientesJlabel;
-    private javax.swing.JLabel phJlabel;
-    private javax.swing.JLabel temperaturaJlabel;
-    private javax.swing.JTextField txt_humedad_ambiente;
-    private javax.swing.JTextField txt_humedad_suelo;
-    private javax.swing.JTextField txt_nitrogeno;
-    private javax.swing.JTextField txt_nutriente;
-    private javax.swing.JTextField txt_pH;
-    private javax.swing.JTextField txt_temperatura_ambiente;
-    private javax.swing.JTextField txt_temperatura_suelo;
-    private javax.swing.JLabel volverJLabel;
-    private javax.swing.JPanel volverJPanel;
+    private javax.swing.JTextField nutrientesTXT;
+    private login.PanelRound panelRound1;
+    private login.PanelRound panelRound2;
+    private javax.swing.JTextField phTXT;
+    private javax.swing.JLabel phjlabel;
+    private javax.swing.JLabel phjlabel1;
+    private javax.swing.JLabel phjlabel2;
+    private javax.swing.JLabel phjlabel3;
+    private javax.swing.JLabel phjlabel4;
+    private javax.swing.JLabel phjlabel5;
+    private login.PanelRound phjpanel;
+    private login.PanelRound phjpanel1;
+    private login.PanelRound phjpanel2;
+    private login.PanelRound phjpanel3;
+    private login.PanelRound phjpanel4;
+    private login.PanelRound phjpanel5;
+    private javax.swing.JTextField phjtextfield2;
+    private javax.swing.JLabel status;
+    private javax.swing.JTextField temperaturaATXT;
+    private javax.swing.JTextField temperaturaSTXT;
+    private javax.swing.JLabel temperaturajlabel;
+    private login.PanelRound temperaturajpanel;
+    private javax.swing.JLabel vergraficajlabel;
+    private login.PanelRound vergraficajpanel;
     // End of variables declaration                   
 }
