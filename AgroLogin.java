@@ -1,18 +1,36 @@
 package login;
-
-//sebas
-import java.sql.*;
-
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.sql.*;
+import clases.Conexión;
+import javax.swing.JOptionPane;
 public class Agrologin extends javax.swing.JFrame {
-            
+    
+    //Funcion para obtener IdUsuario
+    public static int ObtenerIdUsuario(String user, String pass, Connection cn, ResultSet rs){
+        try{
+            cn = Conexión.conectar();
+            PreparedStatement pst = cn.prepareStatement("select id_usuario from usuario where nombre_usuario = '"
+                + user + "' and contraseña = '" + pass +"'");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                return (rs.getInt("id_usuario"));
+            }
+        }
+        catch(Exception e){
+            System.err.println("Error en el boton entrar" + e);
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesion, contacte al programador tqm");
+        }
+        return -1;
+    }
+    //Este es el dato que despues se va para Agrosuelos para saber que en que Usuario estamos
+    public static int id_usuario;
+    //Estos son los datos para comprobar el usuario y contraseña
+    public static String user = ""; 
+    String pass = "";
+    
     public Agrologin() {
         initComponents();
-        
-        //Sebas
-        this.setLocationRelativeTo(null);
-        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -37,6 +55,7 @@ public class Agrologin extends javax.swing.JFrame {
         entrar = new login.PanelRound();
         entrarJLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
         deco = new javax.swing.JLabel();
         bgcampe = new javax.swing.JLabel();
 
@@ -45,8 +64,8 @@ public class Agrologin extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        bg.setBackground(new java.awt.Color(20, 20, 20));
-        bg.setForeground(new java.awt.Color(255, 255, 255));
+        bg.setBackground(new java.awt.Color(230, 230, 230));
+        bg.setForeground(new java.awt.Color(230, 230, 230));
         bg.setMinimumSize(new java.awt.Dimension(570, 740));
         bg.setPreferredSize(new java.awt.Dimension(1000, 600));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,25 +149,25 @@ public class Agrologin extends javax.swing.JFrame {
         cuadrose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bg.add(cuadrose, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, -10, 390, 230));
 
-        panelRound1.setBackground(new java.awt.Color(41, 41, 41));
+        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(40);
         panelRound1.setRoundBottomRight(40);
         panelRound1.setRoundTopLeft(40);
         panelRound1.setRoundTopRight(40);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pausu.setBackground(new java.awt.Color(60, 60, 60));
+        pausu.setBackground(new java.awt.Color(230, 230, 230));
         pausu.setRoundBottomLeft(40);
         pausu.setRoundBottomRight(40);
         pausu.setRoundTopLeft(40);
         pausu.setRoundTopRight(40);
 
-        usuario.setBackground(new java.awt.Color(60, 60, 60));
+        usuario.setBackground(new java.awt.Color(230, 230, 230));
         usuario.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
-        usuario.setForeground(new java.awt.Color(255, 255, 255));
         usuario.setText("Usuario");
         usuario.setAutoscrolls(false);
         usuario.setBorder(null);
+        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 usuarioMousePressed(evt);
@@ -188,15 +207,14 @@ public class Agrologin extends javax.swing.JFrame {
 
         panelRound1.add(pausu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 310, 45));
 
-        pacontra.setBackground(new java.awt.Color(60, 60, 60));
+        pacontra.setBackground(new java.awt.Color(230, 230, 230));
         pacontra.setRoundBottomLeft(40);
         pacontra.setRoundBottomRight(40);
         pacontra.setRoundTopLeft(40);
         pacontra.setRoundTopRight(40);
 
-        contraseña.setBackground(new java.awt.Color(60, 60, 60));
+        contraseña.setBackground(new java.awt.Color(230, 230, 230));
         contraseña.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
-        contraseña.setForeground(new java.awt.Color(255, 255, 255));
         contraseña.setText("Contraseña");
         contraseña.setAutoscrolls(false);
         contraseña.setBorder(null);
@@ -238,7 +256,7 @@ public class Agrologin extends javax.swing.JFrame {
         panelRound1.add(pacontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 310, 45));
 
         registrar.setFont(new java.awt.Font("Gotham", 0, 12)); // NOI18N
-        registrar.setForeground(new java.awt.Color(255, 255, 255));
+        registrar.setForeground(new java.awt.Color(0, 102, 51));
         registrar.setText("¿Sin cuenta aún? Registrate");
         registrar.setBorder(null);
         registrar.setBorderPainted(false);
@@ -251,14 +269,15 @@ public class Agrologin extends javax.swing.JFrame {
         });
         panelRound1.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 390, 30));
 
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 300, 10));
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 290, 10));
 
         entrar.setBackground(new java.awt.Color(108, 89, 49));
-        entrar.setRoundBottomLeft(40);
-        entrar.setRoundBottomRight(40);
-        entrar.setRoundTopLeft(40);
-        entrar.setRoundTopRight(40);
+        entrar.setRoundBottomLeft(30);
+        entrar.setRoundBottomRight(30);
+        entrar.setRoundTopLeft(30);
+        entrar.setRoundTopRight(30);
 
         entrarJLabel.setFont(new java.awt.Font("Gotham", 1, 18)); // NOI18N
         entrarJLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,10 +312,14 @@ public class Agrologin extends javax.swing.JFrame {
         panelRound1.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 310, 40));
 
         jLabel6.setFont(new java.awt.Font("Gotham", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 102, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("INICIAR SESIÓN");
-        panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 390, -1));
+        panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 144, 390, 30));
+
+        status.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 102, 51));
+        panelRound1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         bg.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 390, 480));
 
@@ -340,7 +363,7 @@ public class Agrologin extends javax.swing.JFrame {
     }                                   
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        minim.setBackground(Color.red);
+        minim.setBackground(new Color(61,53,37));
     }                                    
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {                                    
@@ -356,9 +379,48 @@ public class Agrologin extends javax.swing.JFrame {
     }                                         
 
     private void entrarJLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        Agrosuelos b = new Agrosuelos();
-        this.setVisible(false);
-        b.setVisible(true);
+        
+        //A estos dos strings les doy sus respectivos valores
+        user = usuario.getText().trim();
+        pass = contraseña.getText().trim();
+        //Compruebo que los campos de usuario y contraseña contengan algo
+        if(!user.equals("") && !pass.equals("")){
+            try{
+                //Hago la conexion con la base de datos
+                Connection cn = Conexión.conectar();
+                //Instrucciones a la base de datos
+                PreparedStatement pst = cn.prepareStatement(
+                    "select nombre_usuario, contraseña from usuario where nombre_usuario = '"+user
+                        + "' and contraseña = '"+ pass + "'" );
+                //Le digo que la ejecute
+                ResultSet rs = pst.executeQuery();
+                //Compruebo si se encontro la coincidencia
+                if(rs.next()){
+                    //Si el programa encontro coincidencias entonces miro que id tiene el usuario y lo mando a la siguiente pestaña
+                    id_usuario = ObtenerIdUsuario(user, pass, cn, rs);
+                    Agrosuelos.id_usuario = id_usuario;
+                    Agrosuelos b = new Agrosuelos();
+                    this.setVisible(false);
+                    b.setVisible(true);
+                    
+                }
+                else{
+                   status.setText("Datos incorrectos");
+                   usuario.setText("");
+                   contraseña.setText("");
+                }
+            }
+            catch(Exception e){
+                System.err.println("Error en el boton entrar" + e);
+                JOptionPane.showMessageDialog(null, "Error al iniciar sesion, contacte al programador tqm");
+            }
+            
+        }
+        else{
+            status.setText("Debes llenar todos los campos");
+        }
+        //-------
+        
     }                                         
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -445,6 +507,7 @@ public class Agrologin extends javax.swing.JFrame {
     private login.PanelRound panelRound1;
     private login.PanelRound pausu;
     private javax.swing.JButton registrar;
+    private javax.swing.JLabel status;
     private javax.swing.JTextField usuario;
     // End of variables declaration                   
 }
