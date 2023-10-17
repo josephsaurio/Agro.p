@@ -6,55 +6,36 @@
     Por:      Sebastian Andres Medina Cabezas
 */
 
-//Declaración de librerías
+// Declaración de librerías
 #include <DHT.h>
-#include <SPI.h>
-#include <Wire.h>
 
-//Definición de constantes
-#define DHTPIN 3
-#define DHTTYPE DHT11
+// Definición de constantes
+#define DHTPIN 3 //El pin al q esta conectado el DHT11
+#define DHTTYPE DHT11 //El tipo de DHT que tenmos
+#define HUMIDITY_SENSOR A0 //El pin al que esta conectado el sensor de humedad HW-080
 
-//Definición de Variables
+// Definición de Variables
 DHT dht(DHTPIN, DHTTYPE);
-int tiempoActual = 0;
-int tiempoEspera = 5;
-int tiempoConteo = 0;
 
-//los siguientes float son del ambiente
-float temperatura;
-float humedad;
-
-// Configuración inicial
 void setup() {
-   Serial.begin(9600);
-   dht.begin();
-
-   tiempoActual = millis()/1000;
-   tiempoConteo = tiempoActual; 
+  Serial.begin(9600);
+  dht.begin();
 }
 
-// Ciclo del programa
 void loop() {
-  if (tiempoActual > tiempoConteo + tiempoEspera){
-      // Leemos la humedad relativa
-      humedad = dht.readHumidity();
-      // Leemos la temperatura en grados centígrados (por defecto)
-      temperatura = dht.readTemperature();
+  // Lectura del sensor DHT11
+  float temperatura = dht.readTemperature();
+  float humedad = dht.readHumidity();
 
-      // Comprobamos si ha habido algún error en la lectura
+  // Lectura del sensor HW080 (humedad del suelo)
+  int valorhumedad = map(analogRead(HUMIDITY_SENSOR), 0, 1023, 100, 0); //Le cambie el rango de 0 a 1023, y ahora tengo un rango de 0 a 100
 
-      if (isnan(humedad) || isnan(temperatura)) {
-        Serial.println("Error obteniendo los datos del sensor DHT11");
-        return;
-      }
+  // Comprobamos si ha habido algún error en la lectura del DHT11
+  if (isnan(humedad) || isnan(temperatura)) {
+    Serial.println("Error obteniendo los datos del sensor DHT11");
+  } else {
+    Serial.println(String(temperatura)+","+String(humedad)+","+String(valorhumedad));
+  }
 
-      String dato_sensor = String(temperatura)+"|"+String(humedad);
-      Serial.println(dato_sensor);
-
-      tiempoConteo = tiempoActual;      
-    }
-    else {
-      tiempoActual = millis()/1000;
-    }
- }
+  delay(1000); // Agregue un pequeño retraso entre lecturas
+}
