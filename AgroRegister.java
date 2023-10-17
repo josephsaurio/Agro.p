@@ -1,10 +1,8 @@
 package login;
-
-//sebas
-import java.sql.*;
-
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.sql.*;
+import clases.Conexión;
 public class Agroregister extends javax.swing.JFrame {
 
     /**
@@ -12,10 +10,6 @@ public class Agroregister extends javax.swing.JFrame {
      */
     public Agroregister() {
         initComponents();
-        
-        //sebas
-        this.setLocationRelativeTo(null);
-        
     }
 
     /**
@@ -32,24 +26,25 @@ public class Agroregister extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         registrar = new javax.swing.JButton();
         pacontra = new login.PanelRound();
-        txt_contraseña = new javax.swing.JTextField();
+        contraseña = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         pausu = new login.PanelRound();
-        txt_usuario = new javax.swing.JTextField();
+        usuario = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         entrar = new login.PanelRound();
-        jLabel2 = new javax.swing.JLabel();
+        CrearCuenta = new javax.swing.JLabel();
         cerrar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        status = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        label_status = new javax.swing.JLabel();
         decoracion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        bg.setBackground(new java.awt.Color(20, 20, 20));
+        bg.setBackground(new java.awt.Color(230, 230, 230));
         bg.setPreferredSize(new java.awt.Dimension(1000, 600));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -59,7 +54,7 @@ public class Agroregister extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("—");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,40 +86,38 @@ public class Agroregister extends javax.swing.JFrame {
         bg.add(minim, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, 30));
 
         registrar.setFont(new java.awt.Font("Gotham", 0, 12)); // NOI18N
-        registrar.setForeground(new java.awt.Color(255, 255, 255));
+        registrar.setForeground(new java.awt.Color(0, 102, 51));
         registrar.setText("¿Ya tienes una cuenta? Inicia sesión");
         registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         registrar.setBorderPainted(false);
         registrar.setContentAreaFilled(false);
-        registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarActionPerformed(evt);
             }
         });
-        bg.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 240, 20));
+        bg.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 240, 20));
 
-        pacontra.setBackground(new java.awt.Color(41, 41, 41));
+        pacontra.setBackground(new java.awt.Color(255, 255, 255));
         pacontra.setPreferredSize(new java.awt.Dimension(380, 33));
         pacontra.setRoundBottomLeft(20);
         pacontra.setRoundBottomRight(20);
         pacontra.setRoundTopLeft(20);
         pacontra.setRoundTopRight(20);
 
-        txt_contraseña.setBackground(new java.awt.Color(41, 41, 41));
-        txt_contraseña.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
-        txt_contraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txt_contraseña.setText("Contraseña");
-        txt_contraseña.setAutoscrolls(false);
-        txt_contraseña.setBorder(null);
-        txt_contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+        contraseña.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
+        contraseña.setText("Contraseña");
+        contraseña.setAutoscrolls(false);
+        contraseña.setBorder(null);
+        contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_contraseñaMousePressed(evt);
+                contraseñaMousePressed(evt);
             }
         });
-        txt_contraseña.addActionListener(new java.awt.event.ActionListener() {
+        contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contraseñaActionPerformed(evt);
+                contraseñaActionPerformed(evt);
             }
         });
 
@@ -139,7 +132,7 @@ public class Agroregister extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         pacontraLayout.setVerticalGroup(
@@ -148,31 +141,29 @@ public class Agroregister extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(txt_contraseña)
+            .addComponent(contraseña)
         );
 
         bg.add(pacontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 380, 40));
 
-        pausu.setBackground(new java.awt.Color(41, 41, 41));
+        pausu.setBackground(new java.awt.Color(255, 255, 255));
         pausu.setRoundBottomLeft(20);
         pausu.setRoundBottomRight(20);
         pausu.setRoundTopLeft(20);
         pausu.setRoundTopRight(20);
 
-        txt_usuario.setBackground(new java.awt.Color(41, 41, 41));
-        txt_usuario.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
-        txt_usuario.setForeground(new java.awt.Color(255, 255, 255));
-        txt_usuario.setText("Nombre de usuario");
-        txt_usuario.setAutoscrolls(false);
-        txt_usuario.setBorder(null);
-        txt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        usuario.setFont(new java.awt.Font("Gotham", 0, 14)); // NOI18N
+        usuario.setText("Nombre de usuario");
+        usuario.setAutoscrolls(false);
+        usuario.setBorder(null);
+        usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_usuarioMousePressed(evt);
+                usuarioMousePressed(evt);
             }
         });
-        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+        usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuarioActionPerformed(evt);
+                usuarioActionPerformed(evt);
             }
         });
 
@@ -187,7 +178,7 @@ public class Agroregister extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         pausuLayout.setVerticalGroup(
@@ -196,7 +187,7 @@ public class Agroregister extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         bg.add(pausu, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 380, 40));
@@ -207,22 +198,22 @@ public class Agroregister extends javax.swing.JFrame {
         entrar.setRoundTopLeft(20);
         entrar.setRoundTopRight(20);
 
-        jLabel2.setFont(new java.awt.Font("Gotham", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Crear cuenta");
-        jLabel2.setAlignmentY(0.0F);
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        CrearCuenta.setFont(new java.awt.Font("Gotham", 1, 18)); // NOI18N
+        CrearCuenta.setForeground(new java.awt.Color(255, 255, 255));
+        CrearCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CrearCuenta.setText("Crear cuenta");
+        CrearCuenta.setAlignmentY(0.0F);
+        CrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CrearCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        CrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                CrearCuentaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
+                CrearCuentaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel2MouseExited(evt);
+                CrearCuentaMouseExited(evt);
             }
         });
 
@@ -230,14 +221,14 @@ public class Agroregister extends javax.swing.JFrame {
         entrar.setLayout(entrarLayout);
         entrarLayout.setHorizontalGroup(
             entrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(CrearCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
         entrarLayout.setVerticalGroup(
             entrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(CrearCuenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        bg.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 380, 35));
+        bg.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 380, 35));
 
         cerrar.setBackground(new java.awt.Color(108, 89, 49));
 
@@ -245,7 +236,7 @@ public class Agroregister extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("x");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -276,18 +267,21 @@ public class Agroregister extends javax.swing.JFrame {
 
         bg.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 30, 30));
 
+        jSeparator1.setBackground(new java.awt.Color(0, 102, 51));
+        jSeparator1.setForeground(new java.awt.Color(0, 102, 51));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 380, 10));
+
+        status.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 102, 0));
+        bg.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
+
+        jLabel6.setBackground(new java.awt.Color(0, 102, 51));
         jLabel6.setFont(new java.awt.Font("Gotham", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 102, 51));
         jLabel6.setText("REGISTRARSE");
         bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
 
-        label_status.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        label_status.setForeground(new java.awt.Color(255, 255, 255));
-        bg.add(label_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 180, 30));
-
-        decoracion.setForeground(new java.awt.Color(255, 255, 255));
         decoracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/DecoracionRegistro)=3.png"))); // NOI18N
-        decoracion.setText("jLabel1");
         bg.add(decoracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -314,7 +308,7 @@ public class Agroregister extends javax.swing.JFrame {
     }                                    
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        minim.setBackground(Color.red);
+        minim.setBackground(new Color(61,53,37));
     }                                    
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {                                    
@@ -339,73 +333,74 @@ public class Agroregister extends javax.swing.JFrame {
         b.setVisible(true);
     }                                         
 
-    private void txt_contraseñaMousePressed(java.awt.event.MouseEvent evt) {                                            
-        if(txt_contraseña.getText().equals("Contraseña")){
-            txt_contraseña.setText("");
+    private void contraseñaMousePressed(java.awt.event.MouseEvent evt) {                                        
+        if(contraseña.getText().equals("Contraseña")){
+            contraseña.setText("");
         }
-        if(txt_usuario.getText().isEmpty()){
-            txt_usuario.setText("Nombre de usuario");
+        if(usuario.getText().isEmpty()){
+            usuario.setText("Nombre de usuario");
         }
-    }                                           
+    }                                       
 
-    private void txt_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }                                              
+    }                                          
 
-    private void txt_usuarioMousePressed(java.awt.event.MouseEvent evt) {                                         
-        if(txt_usuario.getText().equals("Nombre de usuario")){
-            txt_usuario.setText("");
+    private void usuarioMousePressed(java.awt.event.MouseEvent evt) {                                     
+        if(usuario.getText().equals("Nombre de usuario")){
+            usuario.setText("");
         }
-        if(txt_contraseña.getText().isEmpty()){
-            txt_contraseña.setText("Contraseña");
+        if(contraseña.getText().isEmpty()){
+            contraseña.setText("Contraseña");
         }
+    }                                    
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+    }                                       
+
+    private void CrearCuentaMouseEntered(java.awt.event.MouseEvent evt) {                                         
+        entrar.setBackground(new Color(61,53,37));
     }                                        
 
-    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
-
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        entrar.setBackground(new Color(61,53,37));
-    }                                    
-
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {                                    
+    private void CrearCuentaMouseExited(java.awt.event.MouseEvent evt) {                                        
         entrar.setBackground(new Color(108,89,49));
-    }                                   
+    }                                       
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        
-        //sebas
-        try{
-            //conexion a la base de datos
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/agrop", "root", "1846583467");
-            
-            //instruccion a la base de datos (le voy a mandar los valores del usuario)
-            PreparedStatement pst = cn.prepareStatement("insert into usuario values (?, ?, ?)");
-            
-            //aqui le digo a que columnas van dichos valores
-            pst.setString(1, "0");
-            //txt_usuario es como se llama el jtextfield de donde vamos a sacar este dato
-            pst.setString(2, txt_usuario.getText().trim());
-            pst.setString(3, txt_contraseña.getText().trim());
-            
-            //le digo a java y a la base de datos que ejecute lo anterior
-            pst.executeUpdate();
-            
-            //limpio los txt
-            txt_usuario.setText("");
-            txt_contraseña.setText("");
-            
-            //modifico el jlabel para que me diga que ya se registro el usuario
-            label_status.setText("Registro exitoso.");
+    private void CrearCuentaMouseClicked(java.awt.event.MouseEvent evt) {                                         
+        //Compruebo que los textfield tengan algo adentro
+        if(!usuario.getText().equals("") && !contraseña.getText().equals("")){
+            //Es necesario hacer el try-catch para la conexion
+            try{
+                //conexion a la base de datos
+                Connection cn = Conexión.conectar();
 
-    
-        }catch (Exception e){
-            
+                //instruccion a la base de datos (le voy a mandar los valores del usuario)
+                PreparedStatement pst = cn.prepareStatement("insert into usuario values (?, ?, ?)");
+
+                //aqui le digo a que columnas van dichos valores
+                pst.setString(1, "0");
+                pst.setString(2, usuario.getText().trim()); //El trim es para que no me coja espacios en blanco
+                pst.setString(3, contraseña.getText().trim());
+
+                //le digo a java y a la base de datos que ejecute lo anterior
+                pst.executeUpdate();
+
+                //limpio los txt
+                usuario.setText("");
+                contraseña.setText("");
+                decoracion.setText("");
+                status.setText("Cuenta creada exitosamente");
+
+            }
+            catch (Exception e){
+            }
         }
-        
-        
-    }                                    
+        else{
+            status.setText("LLena todos los campos");
+        }
+        //---------
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -443,22 +438,23 @@ public class Agroregister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JLabel CrearCuenta;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel cerrar;
+    private javax.swing.JTextField contraseña;
     private javax.swing.JLabel decoracion;
     private login.PanelRound entrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel label_status;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel minim;
     private login.PanelRound pacontra;
     private login.PanelRound pausu;
     private javax.swing.JButton registrar;
-    private javax.swing.JTextField txt_contraseña;
-    private javax.swing.JTextField txt_usuario;
+    private javax.swing.JLabel status;
+    private javax.swing.JTextField usuario;
     // End of variables declaration                   
 }
