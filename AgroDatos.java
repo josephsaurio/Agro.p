@@ -763,7 +763,7 @@ public class Agrodatos extends javax.swing.JFrame {
 
     private void ingresarMouseClicked(java.awt.event.MouseEvent evt) {                                      
         //Aqui lo que hago es tomar la hora actual de mi pc
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-d HH:mm:ss");
         Date date = new Date();
         //Empiezo con SQL
         try {
@@ -818,7 +818,7 @@ public class Agrodatos extends javax.swing.JFrame {
                         arduinonano.killArduinoConnection(); //Acabo la conexion con Arduino
 
                         //Aqui lo que hago es tomar la hora actual de mi pc
-                        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-d HH:mm:ss");
                         Date date = new Date();
                         try {
                             //conexion a la base de datos
