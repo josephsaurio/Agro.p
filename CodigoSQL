@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `agrop`.`detalle_suelo` (
   `humedad_ambiente` FLOAT NOT NULL,
   `nitrogeno` FLOAT NOT NULL,
   `nutriente` FLOAT NOT NULL,
-  `tiempo` TIME NOT NULL,
+  `tiempo` DATETIME NOT NULL,
   PRIMARY KEY (`id_detalle_suelo`),
   INDEX `nombre_suelo_idx` (`id_lote` ASC) VISIBLE,
   CONSTRAINT `nombre_suelo`
