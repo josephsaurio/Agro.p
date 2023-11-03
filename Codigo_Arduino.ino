@@ -37,5 +37,5 @@ void loop() {
     Serial.println(String(temperatura)+","+String(humedad)+","+String(valorhumedad));
   }
 
-  delay(800); // Agregue un pequeño retraso entre lecturas
+  delay(1000); // Agregue un pequeño retraso entre lecturas
 }
