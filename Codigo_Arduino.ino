@@ -3,7 +3,7 @@
     Ingeniería en Sistemas
     Curso:    Principios de desarrollo de software
     Programa: Codigo para quemar en el arduino de temperatura y humedad ambiental
-    Por:      Sebastian Andres Medina Cabezas
+    Por:      Sebastian Andres Medina Cabezas, Alejandro Sepulveda Posada y Joseph Saldarriaga Ladino
 */
 
 // Declaración de librerías
@@ -37,5 +37,5 @@ void loop() {
     Serial.println(String(temperatura)+","+String(humedad)+","+String(valorhumedad));
   }
 
-  delay(1000); // Agregue un pequeño retraso entre lecturas
+  delay(800); // Agregue un pequeño retraso entre lecturas
 }
