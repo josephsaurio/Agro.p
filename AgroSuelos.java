@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import clases.Conexión;
 import java.sql.*;
 public class Agrosuelos extends javax.swing.JFrame {
@@ -44,11 +42,19 @@ public class Agrosuelos extends javax.swing.JFrame {
 
     public Agrosuelos() {
         initComponents();
-        kakaka();
-        Ejecucion();
+        paneles();
+        showPanelLotes();
+        setIconImage(getIconImage());
     }
     
-    private void Ejecucion(){
+    //Icono de JFrame
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("com/images/AGROP LOGO CENTRADO.png"));
+        return retValue;
+    }
+    
+    private void showPanelLotes(){
         contadorSebas = ObtenerMaxIdLote();
         //Sebas
         String nombre_lote = "";
@@ -78,7 +84,7 @@ public class Agrosuelos extends javax.swing.JFrame {
     
     
     
-    private void kakaka() {
+    private void paneles() {
         panelalbergar.setLayout(new BoxLayout(panelalbergar, BoxLayout.Y_AXIS));
     }
     
@@ -165,10 +171,6 @@ public class Agrosuelos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        minim = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        cerrar = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         agregarpanel = new login.PanelRound();
         agregarjlabel = new javax.swing.JLabel();
         borrarpanel = new login.PanelRound();
@@ -186,90 +188,16 @@ public class Agrosuelos extends javax.swing.JFrame {
         cambiarnombrejtextfield = new javax.swing.JTextField();
         status = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        CerrarSesionPanel = new login.PanelRound();
+        cerrarSesionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 230));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        minim.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel4.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("—");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minimLayout = new javax.swing.GroupLayout(minim);
-        minim.setLayout(minimLayout);
-        minimLayout.setHorizontalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        minimLayout.setVerticalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(minim, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 0, -1, 30));
-
-        cerrar.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel3.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("x");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cerrarLayout = new javax.swing.GroupLayout(cerrar);
-        cerrar.setLayout(cerrarLayout);
-        cerrarLayout.setHorizontalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        cerrarLayout.setVerticalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 0, 30, 30));
 
         agregarpanel.setBackground(new java.awt.Color(108, 89, 49));
         agregarpanel.setRoundBottomLeft(10);
@@ -306,7 +234,7 @@ public class Agrosuelos extends javax.swing.JFrame {
             .addComponent(agregarjlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(agregarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 210, 40));
+        jPanel1.add(agregarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 210, 40));
 
         borrarpanel.setBackground(new java.awt.Color(108, 89, 49));
         borrarpanel.setRoundBottomLeft(10);
@@ -337,14 +265,18 @@ public class Agrosuelos extends javax.swing.JFrame {
         borrarpanel.setLayout(borrarpanelLayout);
         borrarpanelLayout.setHorizontalGroup(
             borrarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(borrarjlabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, borrarpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(borrarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         borrarpanelLayout.setVerticalGroup(
             borrarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(borrarjlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, borrarpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(borrarjlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(borrarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 210, 40));
+        jPanel1.add(borrarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 210, 40));
 
         panelmenus.setBackground(new java.awt.Color(255, 255, 255));
         panelmenus.setRoundBottomLeft(10);
@@ -382,7 +314,7 @@ public class Agrosuelos extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelmenus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 430, 320));
+        jPanel1.add(panelmenus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 430, 320));
 
         ingresarpanel.setBackground(new java.awt.Color(108, 89, 49));
         ingresarpanel.setRoundBottomLeft(10);
@@ -419,16 +351,16 @@ public class Agrosuelos extends javax.swing.JFrame {
             .addComponent(ingresarjlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(ingresarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 430, 40));
+        jPanel1.add(ingresarpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 430, 40));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 130130.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -40, 210, 150));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -30, 210, 150));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         checkjpanel.setBackground(new java.awt.Color(33, 131, 128));
         checkjpanel.setRoundBottomLeft(10);
@@ -463,7 +395,7 @@ public class Agrosuelos extends javax.swing.JFrame {
             .addComponent(checkjlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
-        jPanel1.add(checkjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 40, -1));
+        jPanel1.add(checkjpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 40, -1));
 
         cambionombrejpanel.setBackground(new java.awt.Color(33, 131, 128));
         cambionombrejpanel.setRoundBottomLeft(10);
@@ -497,14 +429,57 @@ public class Agrosuelos extends javax.swing.JFrame {
             .addComponent(cambiarnombrejtextfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(cambionombrejpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 380, 40));
+        jPanel1.add(cambionombrejpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 380, 40));
 
         status.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         status.setForeground(new java.awt.Color(102, 51, 0));
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 20));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/circulo 5050.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, -1, -1));
+
+        CerrarSesionPanel.setBackground(new java.awt.Color(255, 255, 255));
+        CerrarSesionPanel.setRoundBottomLeft(10);
+        CerrarSesionPanel.setRoundBottomRight(10);
+        CerrarSesionPanel.setRoundTopLeft(10);
+        CerrarSesionPanel.setRoundTopRight(10);
+
+        cerrarSesionLabel.setBackground(new java.awt.Color(0, 0, 0));
+        cerrarSesionLabel.setFont(new java.awt.Font("Gotham", 1, 10)); // NOI18N
+        cerrarSesionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cerrarSesionLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/cerrarSesionIco.png"))); // NOI18N
+        cerrarSesionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarSesionLabel.setRequestFocusEnabled(false);
+        cerrarSesionLabel.setVerifyInputWhenFocusTarget(false);
+        cerrarSesionLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cerrarSesionLabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CerrarSesionPanelLayout = new javax.swing.GroupLayout(CerrarSesionPanel);
+        CerrarSesionPanel.setLayout(CerrarSesionPanelLayout);
+        CerrarSesionPanelLayout.setHorizontalGroup(
+            CerrarSesionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionPanelLayout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(cerrarSesionLabel)
+                .addContainerGap())
+        );
+        CerrarSesionPanelLayout.setVerticalGroup(
+            CerrarSesionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CerrarSesionPanelLayout.createSequentialGroup()
+                .addComponent(cerrarSesionLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(CerrarSesionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 50, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -520,30 +495,6 @@ public class Agrosuelos extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        this.setState(JFrame.ICONIFIED);
-    }                                    
-
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        minim.setBackground(new Color(61,53,37));;
-    }                                    
-
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {                                    
-        minim.setBackground(new Color(108,89,49));
-    }                                   
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        System.exit(0);
-    }                                    
-
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        cerrar.setBackground(Color.red);
-    }                                    
-
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {                                    
-        cerrar.setBackground(new Color(108,89,49));
-    }                                   
 
     private void agregarjlabelMouseEntered(java.awt.event.MouseEvent evt) {                                           
         agregarpanel.setBackground(new Color(61,53,37));
@@ -573,6 +524,8 @@ public class Agrosuelos extends javax.swing.JFrame {
         
         //Este dato es para la siguiente pestaña
         Agrodatos.nombre_lote = nombre_lote;
+        Agrográfica.nombre_lote = nombre_lote;
+        Agroconsejos.nombre_lote = nombre_lote;
         //Este codigo va a servir para obtener el valor id_lote para la siguiente pantalla
         if (panelSeleccionado != null) {
             try{
@@ -581,13 +534,15 @@ public class Agrosuelos extends javax.swing.JFrame {
                 //Instrucciones a la base de datos
                 PreparedStatement pst = cn.prepareStatement(
                     "select id_lote from carpeta_lote where nombre_lote = '"+nombre_lote
-                        + "'");
+                        + "' and id_usuario = "+id_usuario);
                 //Le digo que la ejecute
                 ResultSet rs = pst.executeQuery();
                 //Compruebo si se encontro la coincidencia
                 if(rs.next()){
                    //Este dato es para la siguiente pestaña
                    Agrodatos.id_lote = rs.getString("id_lote");
+                   Agrográfica.id_lote = rs.getString("id_lote");
+                   Agroconsejos.id_lote = rs.getString("id_lote");
                    Agrodatos a = new Agrodatos();
                    this.setVisible(false);
                    a.setVisible(true);
@@ -714,6 +669,20 @@ public class Agrosuelos extends javax.swing.JFrame {
         cambiarnombrejtextfield.setText("CAMBIAR NOMBRE");
     }                                        
 
+    private void cerrarSesionLabelMouseClicked(java.awt.event.MouseEvent evt) {                                               
+        Agrologin a = new Agrologin();
+        this.setVisible(false);
+        a.setVisible(true);
+    }                                              
+
+    private void cerrarSesionLabelMouseEntered(java.awt.event.MouseEvent evt) {                                               
+        // TODO add your handling code here:
+    }                                              
+
+    private void cerrarSesionLabelMouseExited(java.awt.event.MouseEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -747,13 +716,14 @@ public class Agrosuelos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
+    private login.PanelRound CerrarSesionPanel;
     private javax.swing.JLabel agregarjlabel;
     private login.PanelRound agregarpanel;
     private javax.swing.JLabel borrarjlabel;
     private login.PanelRound borrarpanel;
     private javax.swing.JTextField cambiarnombrejtextfield;
     private login.PanelRound cambionombrejpanel;
-    private javax.swing.JPanel cerrar;
+    private javax.swing.JLabel cerrarSesionLabel;
     private javax.swing.JLabel checkjlabel;
     private login.PanelRound checkjpanel;
     private javax.swing.JLabel ingresarjlabel;
@@ -761,11 +731,8 @@ public class Agrosuelos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel minim;
     private javax.swing.JPanel panelalbergar;
     private login.PanelRound panelmenus;
     private javax.swing.JLabel status;
