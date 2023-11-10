@@ -3,6 +3,8 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import java.sql.*;
 import clases.Conexión;
+import java.awt.Image;
+import java.awt.Toolkit;
 public class Agroregister extends javax.swing.JFrame {
 
     /**
@@ -10,8 +12,14 @@ public class Agroregister extends javax.swing.JFrame {
      */
     public Agroregister() {
         initComponents();
+        setIconImage(getIconImage());
     }
-
+    //Icono de JFrame
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("com/images/AGROP LOGO CENTRADO.png"));
+        return retValue;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,8 +30,6 @@ public class Agroregister extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        minim = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         registrar = new javax.swing.JButton();
         pacontra = new login.PanelRound();
         contraseña = new javax.swing.JTextField();
@@ -33,57 +39,17 @@ public class Agroregister extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         entrar = new login.PanelRound();
         CrearCuenta = new javax.swing.JLabel();
-        cerrar = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         status = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         decoracion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
 
         bg.setBackground(new java.awt.Color(230, 230, 230));
         bg.setPreferredSize(new java.awt.Dimension(1000, 600));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        minim.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel4.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("—");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minimLayout = new javax.swing.GroupLayout(minim);
-        minim.setLayout(minimLayout);
-        minimLayout.setHorizontalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        minimLayout.setVerticalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        bg.add(minim, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, 30));
 
         registrar.setFont(new java.awt.Font("Gotham", 0, 12)); // NOI18N
         registrar.setForeground(new java.awt.Color(0, 102, 51));
@@ -230,50 +196,13 @@ public class Agroregister extends javax.swing.JFrame {
 
         bg.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 380, 35));
 
-        cerrar.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel3.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("x");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cerrarLayout = new javax.swing.GroupLayout(cerrar);
-        cerrar.setLayout(cerrarLayout);
-        cerrarLayout.setHorizontalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        cerrarLayout.setVerticalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        bg.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 30, 30));
-
         jSeparator1.setBackground(new java.awt.Color(0, 102, 51));
         jSeparator1.setForeground(new java.awt.Color(0, 102, 51));
         bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 380, 10));
 
-        status.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        status.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         status.setForeground(new java.awt.Color(0, 102, 0));
-        bg.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
+        bg.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 240, 40));
 
         jLabel6.setBackground(new java.awt.Color(0, 102, 51));
         jLabel6.setFont(new java.awt.Font("Gotham", 1, 24)); // NOI18N
@@ -302,30 +231,6 @@ public class Agroregister extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        this.setState(JFrame.ICONIFIED);
-    }                                    
-
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        minim.setBackground(new Color(61,53,37));
-    }                                    
-
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {                                    
-        minim.setBackground(new Color(108,89,49));
-    }                                   
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        System.exit(0);
-    }                                    
-
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        cerrar.setBackground(Color.red);
-    }                                    
-
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {                                    
-        cerrar.setBackground(new Color(108,89,49));
-    }                                   
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
         Agrologin b = new Agrologin();
@@ -397,7 +302,6 @@ public class Agroregister extends javax.swing.JFrame {
             }
         }
         else{
-            status.setText("LLena todos los campos");
         }
         //---------
     }                                        
@@ -440,17 +344,13 @@ public class Agroregister extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JLabel CrearCuenta;
     private javax.swing.JPanel bg;
-    private javax.swing.JPanel cerrar;
     private javax.swing.JTextField contraseña;
     private javax.swing.JLabel decoracion;
     private login.PanelRound entrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel minim;
     private login.PanelRound pacontra;
     private login.PanelRound pausu;
     private javax.swing.JButton registrar;
