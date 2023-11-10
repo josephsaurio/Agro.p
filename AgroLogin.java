@@ -3,7 +3,8 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import java.sql.*;
 import clases.Conexión;
-import javax.swing.JOptionPane;
+import java.awt.Image;
+import java.awt.Toolkit;
 public class Agrologin extends javax.swing.JFrame {
     
     //Funcion para obtener IdUsuario
@@ -18,8 +19,6 @@ public class Agrologin extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
-            System.err.println("Error en el boton entrar" + e);
-            JOptionPane.showMessageDialog(null, "Error al iniciar sesion, contacte al programador tqm");
         }
         return -1;
     }
@@ -32,16 +31,20 @@ public class Agrologin extends javax.swing.JFrame {
     public Agrologin() {
         initComponents();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
     }
 
+    //Icono de JFrame
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("com/images/AGROP LOGO CENTRADO.png"));
+        return retValue;
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        minim = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        cerrar = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         cuadrose = new javax.swing.JLabel();
         panelRound1 = new login.PanelRound();
         pausu = new login.PanelRound();
@@ -61,7 +64,6 @@ public class Agrologin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setUndecorated(true);
         setResizable(false);
 
         bg.setBackground(new java.awt.Color(230, 230, 230));
@@ -69,80 +71,6 @@ public class Agrologin extends javax.swing.JFrame {
         bg.setMinimumSize(new java.awt.Dimension(570, 740));
         bg.setPreferredSize(new java.awt.Dimension(1000, 600));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        minim.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel4.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("—");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minimLayout = new javax.swing.GroupLayout(minim);
-        minim.setLayout(minimLayout);
-        minimLayout.setHorizontalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        minimLayout.setVerticalGroup(
-            minimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, minimLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        bg.add(minim, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, 30));
-
-        cerrar.setBackground(new java.awt.Color(108, 89, 49));
-
-        jLabel3.setFont(new java.awt.Font("Gotham", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("x");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cerrarLayout = new javax.swing.GroupLayout(cerrar);
-        cerrar.setLayout(cerrarLayout);
-        cerrarLayout.setHorizontalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        cerrarLayout.setVerticalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerrarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        bg.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 30, 30));
 
         cuadrose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cuadrose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/logoletra_1.png"))); // NOI18N
@@ -267,10 +195,10 @@ public class Agrologin extends javax.swing.JFrame {
                 registrarActionPerformed(evt);
             }
         });
-        panelRound1.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 390, 30));
+        panelRound1.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 220, 30));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         panelRound1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 290, 10));
 
         entrar.setBackground(new java.awt.Color(108, 89, 49));
@@ -317,12 +245,14 @@ public class Agrologin extends javax.swing.JFrame {
         jLabel6.setText("INICIAR SESIÓN");
         panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 144, 390, 30));
 
-        status.setFont(new java.awt.Font("Book Antiqua", 1, 14)); // NOI18N
+        status.setFont(new java.awt.Font("Gotham", 2, 12)); // NOI18N
         status.setForeground(new java.awt.Color(0, 102, 51));
-        panelRound1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelRound1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 290, 10));
 
         bg.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 390, 480));
 
+        deco.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         deco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/images/Decoracioninterfaz (1).png"))); // NOI18N
         deco.setText("jLabel4");
         bg.add(deco, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -70, -1, -1));
@@ -345,30 +275,6 @@ public class Agrologin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        System.exit(0);
-    }                                    
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
-         this.setState(JFrame.ICONIFIED);
-    }                                    
-
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        cerrar.setBackground(Color.red);
-    }                                    
-
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {                                    
-        cerrar.setBackground(new Color(108,89,49));
-    }                                   
-
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        minim.setBackground(new Color(61,53,37));
-    }                                    
-
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {                                    
-        minim.setBackground(new Color(108,89,49));
-    }                                   
 
     private void entrarJLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
         entrar.setBackground(new Color(108,89,49));
@@ -411,8 +317,7 @@ public class Agrologin extends javax.swing.JFrame {
                 }
             }
             catch(Exception e){
-                System.err.println("Error en el boton entrar" + e);
-                JOptionPane.showMessageDialog(null, "Error al iniciar sesion, contacte al programador tqm");
+                status.setText("El usuario o la contraseña son incorrectos.");
             }
             
         }
@@ -490,19 +395,15 @@ public class Agrologin extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JPanel bg;
     private javax.swing.JLabel bgcampe;
-    private javax.swing.JPanel cerrar;
     private javax.swing.JTextField contraseña;
     private javax.swing.JLabel cuadrose;
     private javax.swing.JLabel deco;
     private login.PanelRound entrar;
     private javax.swing.JLabel entrarJLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel minim;
     private login.PanelRound pacontra;
     private login.PanelRound panelRound1;
     private login.PanelRound pausu;
