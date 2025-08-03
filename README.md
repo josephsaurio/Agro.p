@@ -3,6 +3,7 @@
 ## Group Members
 - Sebastian Andres Medina Cabezas
 - Alejandro Sepulveda Posada
+- Joseph Saldarriaga Ladino
 
 ## Environment and Tools
 - **Operating System:** Windows 11 pro
@@ -22,4 +23,5 @@
 
 4. **Run the executable:**
    ```sh
+
    ./demo
